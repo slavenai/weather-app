@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h3>Location:</h3>
+      <form [formGroup]="weatherSearchForm" (ngSubmit)="sendData(weatherSearchForm.value)">
+        <div>
+          <input type="text" id="weatherLocation" aria-describedby="weatherLocation"
+            placeholder="Please type in a location" formControlName="location" />
+        </div>
+        <div>
+          <button type="submit">
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm">
+      <div *ngIf="this.weatherData && this.weatherData.success != false">
+        <img src="{{this.weatherData.current.weather_icons}}">
+        <div class="temp">
+          <p>
+            {{this.formatTemperature(this.weatherData?.current.temperature)}}
+          </p>
+        </div>
+        <p class="location">{{this.showDestination(this.weatherData?.location.name,
+          this.weatherData?.location.country)}}
+        </p>
+        <div class="row info">
+          <div class="col-sm">
+            <p>{{this.formatDateTime(this.weatherData?.location.localtime)}}</p>
+            <p>{{this.weatherData?.current.weather_descriptions}}</p>
+            <p>Feels like: {{this.formatTemperature(this.weatherData?.current.feelslike)}}</p>
+          </div>
+          <div class="col-sm">
+            <p>
+              Wind: {{this.weatherData?.current.wind_speed}} mph
+            </p>
+            <p>
+              Humidity: {{this.weatherData?.current.humidity}}%
+            </p>
+            <p>
+              Precipitacion: {{this.weatherData?.current.precip}}%
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

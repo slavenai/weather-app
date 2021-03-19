@@ -1,0 +1,75 @@
+.weather-info {
+  display: inline-block;
+}
+
+.container {
+  text-align: center;
+}
+
+h3 {
+  margin-top: 20px;
+  color: white;
+}
+
+form > div {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+input {
+  border: 1px solid white;
+  border-radius: 9px;
+  outline: none;
+  width: 300px;
+  padding: 7px;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input:focus {
+  background-color: white;
+}
+
+input::placeholder {
+  color: lightgray;
+  transition: color 0.4s ease;
+}
+
+button {
+  background-color: rgb(231, 202, 177);
+  border: 1px solid rgb(231, 202, 177);
+  color: white;
+  padding: 7px;
+  width: 92px;
+  border-radius: 6px;
+}
+
+img {
+  border-radius: 90px;
+  margin-top: 20px;
+  position: fixed;
+}
+
+.location {
+  font-size: 34px;
+  color: white;
+  font-weight: 32px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.temp {
+  display: inline-block;
+  margin-top: 42px;
+  margin-left: 90px;
+  color: white;
+  font-size: larger;
+  font-weight: 600;
+}
+
+.row.info {
+  text-align: left;
+  margin-left: 90px;
+}
