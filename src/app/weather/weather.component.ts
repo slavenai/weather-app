@@ -39,7 +39,7 @@ export class WeatherComponent implements OnInit {
 
   formatTemperature(celsiusDegrees) {
     let fahrenHeit = 0;
-    if (celsiusDegrees == 0 || celsiusDegrees == undefined) {
+    if (celsiusDegrees == undefined) {
       return;
     } else {
       fahrenHeit = (celsiusDegrees * 9 / 5) + 32;
