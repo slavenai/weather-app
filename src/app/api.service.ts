@@ -17,10 +17,12 @@ export class ApiService {
     'Access-Control-Allow-Origin': 'https://api.apixu.com'
   }
 
-  getWeather(location) {
-       return this.http.get(
-      'http://api.weatherstack.com/current?access_key=bd99791ff3acfce034c2e265680b8288&query=' + location
-    );
-  }
+ getWeather(location) {
+      return this.http.get(
+     'http://api.weatherstack.com/current?access_key=bd99791ff3acfce034c2e265680b8288&query=' + location
+   );
+ }
+
+ 
 }
 
