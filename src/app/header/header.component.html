@@ -1,7 +1,15 @@
 <nav>
     <ul>
         <li class="img">
-            <img src="./favicon.ico" class="img-fluid">
+            <a href="/"><img src="./favicon.ico" class="img-fluid"></a>
         </li>
+        <ul class="user" *ngIf="user.isLoggedIn == false || user.isLoggedIn == undefined">
+            <li><a href="login">Log in</a></li>
+            <li><a href="register">Register</a></li>
+        </ul>
+        <ul class="user" *ngIf="user.isLoggedIn == true">
+            <li>Welcome, {{user.username}}</li>
+            <li><a (click)="logout()">Log out</a></li>
+        </ul>
     </ul>
 </nav>

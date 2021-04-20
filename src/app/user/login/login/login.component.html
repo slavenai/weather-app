@@ -1,0 +1,15 @@
+<h2>Login</h2>
+<form #f="ngForm" (ngSubmit)="loginHandler(f.value)">
+
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" ngModel required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input name="password" type="password" ngModel required>
+    </div>
+
+    <button [disabled]="!f.valid" type="submit">Login</button>
+
+</form>

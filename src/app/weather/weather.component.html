@@ -19,19 +19,18 @@
         <img src="{{this.weatherData.current.weather_icons}}">
         <div class="temp">
           <p>
-            {{this.formatTemperature(this.weatherData?.current.temperature)}}
+            {{this.apiService.formatTemperature(this.weatherData?.current.temperature)}}
           </p>
           <p id="weatherDescription">
             {{this.weatherData?.current.weather_descriptions}}
           </p>
         </div>
-        <p class="location">{{this.showDestination(this.weatherData?.location.name,
-          this.weatherData?.location.country)}}
+        <p class="location">{{location}}
         </p>
         <div class="row info">
           <div class="col-sm">
-            <p>{{this.formatDateTime(this.weatherData?.location.localtime)}}</p>
-            <p>Feels like: {{this.formatTemperature(this.weatherData?.current.feelslike)}}</p>
+            <p>{{this.apiService.formatDateTime(this.weatherData?.location.localtime)}}</p>
+            <p>Feels like: {{this.apiService.formatTemperature(this.weatherData?.current.feelslike)}}</p>
             <p>Cloud cover: {{this.weatherData?.current.cloudcover}}%</p>
           </div>
           <div class="col-sm">
@@ -51,3 +50,4 @@
     </div>
   </div>
 </div>
+<app-info [location]="this.location"></app-info>

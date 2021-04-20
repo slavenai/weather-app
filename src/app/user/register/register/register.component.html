@@ -1,0 +1,24 @@
+<h2>Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="registerHandler()">
+
+
+    <div>
+        <label for="username">Username</label>
+        <input formControlName="username" type="text">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input formControlName="email" type="text">
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input formControlName="password" type="password">
+    </div>
+    <div>
+        <label for="repassword">Repeat Password</label>
+        <input formControlName="repassword" type="password">
+    </div>
+    <button [disabled]="!registerForm.valid" type="submit">Register</button>
+
+</form>

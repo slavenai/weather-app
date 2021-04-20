@@ -1,0 +1,43 @@
+h2 {
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+div input {
+  opacity: 0.4;
+  width: 250px;
+  border: none;
+}
+
+div input:hover,
+div input:focus,
+div input:active {
+  opacity: 0.8;
+  background-color: whitesmoke;
+  outline: none;
+}
+
+button {
+  background-color: rgb(231, 202, 177);
+  border: 1px solid rgb(231, 202, 177);
+  color: white;
+  margin-top: 10px;
+  padding: 7px;
+  width: 90px;
+  border-radius: 6px;
+}

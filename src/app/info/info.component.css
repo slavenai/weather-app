@@ -1,0 +1,38 @@
+.info {
+}
+
+.container {
+  display: flex;
+  height: inherit;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+span {
+  margin: 10px;
+}
+
+span h4,
+h5 {
+  text-align: center;
+  color: white;
+}
+
+.info-col {
+  font-size: large;
+  list-style: none;
+}
+
+.info-col a {
+  color: black;
+  text-decoration: none;
+  border-right: 2px solid black;
+  padding: 10px;
+}
+
+.info-col a:hover {
+  color: white;
+  border-bottom: 2px solid white;
+  border-right: none;
+  text-decoration: none;
+}
