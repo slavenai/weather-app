@@ -1,38 +1,46 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireAuth } from  "@angular/fire/auth";
 import Article from '../models/articles';
+import { ApiService } from './api.service';
+import { BehaviorSubject } from 'rxjs';
+import { UserService } from './user.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class ArticleService {
 
-  private dbPath = '/articles';
 
-  articlesRef: AngularFireList<Article> = null;
+  article: Article  
+  articlesRef;
 
-  constructor(private db: AngularFireDatabase) {
-    this.articlesRef = db.list(this.dbPath);
+
+  constructor(private db: AngularFireDatabase, private userService: UserService) {
+    this.articlesRef = this.db.database.ref('articles');
   }
 
-  getAll(): AngularFireList<Article> {
-    return this.articlesRef;
-  }
 
-  create(article: Article): any {
-    return this.articlesRef.push(article);
-  }
+  create(article: Article, type, location, uid): any { 
+      let newArticleRef = this.articlesRef.push();
+      let currArticle;
 
-  update(id: string, value: any): Promise<void> {
-    return this.articlesRef.update(id, value);
-  }
+      newArticleRef.set({
+      title: article.title,
+      location: location,
+      category: type,
+      description: article.description,
+      imageUrl: article.imageUrl,
+      creatorId: uid,
+      likes: []
+    });
 
-  delete(id: string): Promise<void> {
-    return this.articlesRef.remove(id);
-  }
+    newArticleRef.on('value', function(snapshot) {
+      currArticle = snapshot.val();      
+    })
 
-  deleteAll(): Promise<void> {
-    return this.articlesRef.remove();
+    this.article = currArticle;
+    this.article.id = newArticleRef.key;
+
+    return this.article;
   }
 }

@@ -1,26 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import Article from 'src/app/models/articles';
+import { ApiService } from 'src/app/services/api.service';
 import { ArticleService } from 'src/app/services/article.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css', '../../user/register/register/register.component.css']
 })
 export class CreateComponent implements OnInit {
 
-  article: Article
-
-  constructor(private articleService: ArticleService) { }
-
+  createForm: FormGroup;
+  type: string;
+ 
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private articleService: ArticleService,
+    private activatedRoute: ActivatedRoute,
+    private apiService: ApiService,
+    private userService: UserService
+  )
+   {
+    this.activatedRoute.data.subscribe( data => {
+      this.type = data.type;
+    });
+  }
+  
+  
   ngOnInit(): void {
+    this.createForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      imageUrl: ['', Validators.required]
+    });
+    
+
   }
 
+  get location() {
+    return this.apiService.location;
+  }
 
-  createArticle(): void {
-    this.article = new Article();
-    this.articleService.create(this.article).then(() => {
-      console.log("Article created!");
-    })
+  get userId() {
+    return this.userService.currentUser.id;
+  }
+
+  createHandler(data) {
+      try{
+        this.articleService.create(data, this.type, this.location, this.userId);
+      } catch(e){
+        console.log(e);
+      }
+       
+      this.router.navigate(['/']);
   }
 }

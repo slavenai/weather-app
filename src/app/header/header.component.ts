@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import User from '../models/user';
 import { UserService } from '../services/user.service';
@@ -8,22 +8,20 @@ import { UserService } from '../services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-
- public get user(): User {
-    return this.userService.currentUser;
- }
+export class HeaderComponent implements DoCheck {
+  currentUser = null;
 
   constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+ngDoCheck() {
+this.currentUser = this.userService.currentUser
+}
 
 
   logout() {
     try{
       this.userService.logout();
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }catch(e) {
       console.log(e);
     }

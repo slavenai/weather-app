@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  public location: string;
 
-  headerDict = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    // 'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Origin': 'https://api.apixu.com'
-  }
+  constructor(private http: HttpClient) {}
 
- getWeather(location) {
-      return this.http.get(
-     'http://api.weatherstack.com/current?access_key=bd99791ff3acfce034c2e265680b8288&query=' + location
-   );
+
+ getWeather(location): any {
+  this.http.get('http://api.weatherstack.com/current?access_key=bd99791ff3acfce034c2e265680b8288&query=' + location).subscribe(d => {
+    // @ts-ignore
+    this.location = `${d.location.name}, ${d.location.country}`;
+  })
+  return this.http.get('http://api.weatherstack.com/current?access_key=bd99791ff3acfce034c2e265680b8288&query=' + location);
+
  }
 
  fahrenheitDegrees(celsiusDegrees) {
@@ -42,13 +39,13 @@ formatTemperature(celsiusDegrees) {
 }
 }
 
-showDestination(name, country) {
-  if (name == '' || name == undefined || country == '' || country == undefined) {
-    return;
-  } else {
-    return `${name}, ${country}`;
-  }
-}
+// showDestination(name, country) {
+//   if (name == '' || name == undefined || country == '' || country == undefined) {
+//     return;
+//   } else {
+//     return `${name}, ${country}`;
+//   }
+// }
 
 formatDateTime(str: string) {
   const strArr = str.split(' ');

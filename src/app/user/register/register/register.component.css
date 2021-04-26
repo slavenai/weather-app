@@ -20,8 +20,9 @@ div {
 
 div input {
   opacity: 0.4;
-  width: 250px;
+  width: 300px;
   border: none;
+  height: 30px;
 }
 
 div input:hover,

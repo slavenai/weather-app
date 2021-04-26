@@ -1,9 +1,10 @@
 export default class Article {
+    title: string;
+    location: string;
     category: string;
-    description: number;
+    description: string;
     imageUrl: string;
-    comments: Array<string>;
     likes: Array<string>;
     id: string;
-    //published = false;
+    creatorId: string;
   }

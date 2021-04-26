@@ -1,4 +1,5 @@
-import { Component, Input, InputDecorator, OnInit } from '@angular/core';
+import { Component, Input, InputDecorator, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-info',
@@ -7,11 +8,10 @@ import { Component, Input, InputDecorator, OnInit } from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  @Input() location: string;
+ @Input() location: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

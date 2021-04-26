@@ -1,14 +1,14 @@
 <nav>
     <ul>
         <li class="img">
-            <a href="/"><img src="./favicon.ico" class="img-fluid"></a>
+            <a routerLink="/"><img src="./favicon.ico" class="img-fluid"></a>
         </li>
-        <ul class="user" *ngIf="user.isLoggedIn == false || user.isLoggedIn == undefined">
-            <li><a href="login">Log in</a></li>
-            <li><a href="register">Register</a></li>
+        <ul class="user" *ngIf="currentUser.isLoggedIn == false || currentUser.isLoggedIn == undefined">
+            <li><a routerLink="login">Log in</a></li>
+            <li><a routerLink="register">Register</a></li>
         </ul>
-        <ul class="user" *ngIf="user.isLoggedIn == true">
-            <li>Welcome, {{user.username}}</li>
+        <ul class="user" *ngIf="currentUser.isLoggedIn == true">
+            <li>Welcome, {{currentUser.username}}</li>
             <li><a (click)="logout()">Log out</a></li>
         </ul>
     </ul>

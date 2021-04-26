@@ -1,13 +1,41 @@
 <div class="info">
-    <span>
+    <div class="headings">
         <h4>Looking for something to do in {{location}}?</h4>
         <h5>Check our guide!</h5>
-    </span>
+    </div>
 
     <ul class="container">
-        <li class="info-col"><a href="#">Spend the night</a></li>
-        <li class="info-col"><a href="#">Enjoy a meal</a></li>
-        <li class="info-col"><a href="#">Explore</a></li>
-        <li class="info-col"><a href="#">Have fun</a></li>
+        <div class="main">
+            <li class="info-col"><a routerLink="#">Spend the night</a></li>
+            <div class="info-div">
+                <p>Unfortunatelly, no one has published anything yet.</p>
+                <p><a routerLink="/create/night">Be the first one! </a></p>
+            </div>
+        </div>
+        <div class="main">
+            <li class="info-col"><a routerLink="#">Enjoy a meal</a></li>
+            <div class="info-div">
+                <p>Unfortunatelly, no one has published anything yet.</p>
+                <p><a routerLink="/create/meal">Be the first one! </a></p>
+            </div>
+        </div>
+
+        <div class="main">
+
+            <li class="info-col"><a routerLink="#">Explore</a></li>
+            <div class="info-div">
+                <p>Unfortunatelly, no one has published anything yet.</p>
+                <p><a routerLink="/create/explore">Be the first one! </a></p>
+            </div>
+        </div>
+        <div class="main">
+
+            <li class="info-col"><a routerLink="#">Have fun</a></li>
+            <div class="info-div">
+                <p>Unfortunatelly, no one has published anything yet.</p>
+                <p><a routerLink="/create/fun">Be the first one! </a></p>
+            </div>
+        </div>
+
     </ul>
 </div>

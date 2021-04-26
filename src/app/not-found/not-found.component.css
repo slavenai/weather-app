@@ -1,0 +1,40 @@
+.info-404 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem 0 1rem;
+  margin-top: 3rem;
+}
+
+img {
+  width: 130px;
+  height: 130px;
+}
+
+h1 {
+  color: white;
+  font-size: 10rem;
+  margin-bottom: 0;
+}
+
+.nav-info {
+  text-align: center;
+}
+
+.nav-info p {
+  font-size: 4rem;
+  color: white;
+  margin-bottom: 0;
+}
+
+.nav-info a {
+  color: white;
+  text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.7rem;
+  padding: 0.3rem;
+}
