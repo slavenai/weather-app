@@ -1,0 +1,87 @@
+.article-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+article {
+  border: 0.2rem solid rgb(231, 202, 177);
+  border-radius: 4rem;
+  width: 40rem;
+  padding: 1.5rem;
+  margin: 1rem;
+  background-color: rgb(240, 240, 240);
+  text-align: center;
+}
+
+h5 {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.1rem solid rgb(231, 202, 177);
+  color: black;
+}
+
+section {
+  display: flex;
+}
+
+img {
+  width: 15rem;
+  height: 15rem;
+  float: left;
+  border: 0.1rem solid rgb(240, 240, 240);
+  border-radius: 4rem;
+}
+
+.desc {
+  text-align: initial;
+  margin-left: 1rem;
+  align-self: flex-start;
+  margin-top: 3rem;
+}
+
+.info {
+  text-align: right;
+  border-right: 1px solid;
+  padding-right: 10px;
+}
+
+.location {
+  margin-top: 0.5rem;
+}
+
+div.info > div.location p {
+  float: left;
+  margin-left: 2rem;
+}
+
+div.info p {
+  margin: 0;
+}
+
+.buttons button {
+  margin-right: 1rem;
+  background-color: rgb(231, 202, 177);
+  border: 1px solid rgb(231, 202, 177);
+  color: white;
+  margin-top: 10px;
+  padding: 0.2rem;
+  width: 5rem;
+  border-radius: 6px;
+}
+
+.create {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+
+.create button {
+  background-color: rgb(231, 202, 177);
+  border: 1px solid rgb(231, 202, 177);
+  color: white;
+  width: 8rem;
+  padding: 10px;
+  border-radius: 6px;
+}

@@ -21,6 +21,8 @@ import { LoginComponent } from './user/login/login/login.component';
 import { UserService } from './services/user.service';
 import { ArticleService } from './services/article.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ArticlesComponent } from './articles/articles/articles.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     InfoComponent,
     RegisterComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule    
   ],
-  providers: [ ApiService, UserService, ArticleService ],
+  providers: [ ApiService, UserService, ArticleService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

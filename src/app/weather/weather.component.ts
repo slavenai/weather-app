@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ArticleService } from '../services/article.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-weather',
@@ -15,24 +16,34 @@ export class WeatherComponent implements OnInit {
   public weatherData: any;
   public location: string;
 
-  constructor(private formBuilder: FormBuilder, public apiService: ApiService, private articleService: ArticleService) {}
+  constructor(private formBuilder: FormBuilder, public apiService: ApiService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.weatherSearchForm = this.formBuilder.group({
       location: ['']
     });
+
+    if (this.apiService.location && this.userService.currentUser.isLoggedIn == true) {
+      this.apiService
+      .getWeather(this.apiService.location)
+       .subscribe(data => {
+         this.weatherData = data
+         this.location = this.apiService.showDestination(data.location.name, data.location.country);
+        })
+    }
+
   }
+
 
   sendData(formValues) {
     this.apiService
       .getWeather(formValues.location)
        .subscribe(data => {
          this.weatherData = data
-         console.log(this.weatherData);
-          // this.location = this.apiService.showDestination(this.weatherData.location.name, this.weatherData?.location.country); 
-          // this.apiService.location = this.location;
-          this.location = this.apiService.location
-        })         
+          this.location = this.apiService.showDestination(data.location.name, data.location.country);
+          this.apiService.location = this.location;
+        })
+     
   }
 
 }

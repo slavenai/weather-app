@@ -7,12 +7,9 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css', '../../register/register/register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor( private router: Router, private userService: UserService) { }
-
-  ngOnInit(): void {
-  }
+  constructor( private router: Router, private userService: UserService) {}
 
   loginHandler(data) {
     try{
@@ -22,5 +19,6 @@ export class LoginComponent implements OnInit {
     } catch(e) {
       console.log(e);
     }
+
   }
 }

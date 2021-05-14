@@ -6,34 +6,54 @@
 
     <ul class="container">
         <div class="main">
-            <li class="info-col"><a routerLink="#">Spend the night</a></li>
-            <div class="info-div">
+            <li *ngIf='this.articleService.nightArticles.length != 0' class="info-col"><a
+                    routerLink="/articles/night">Spend the night</a></li>
+            <li *ngIf='this.articleService.nightArticles.length == 0' class="info-col"><a>Spend the night</a></li>
+            <div *ngIf='this.articleService.nightArticles.length == 0' class="info-div">
                 <p>Unfortunatelly, no one has published anything yet.</p>
                 <p><a routerLink="/create/night">Be the first one! </a></p>
             </div>
+            <div *ngIf='this.articleService.nightArticles.length != 0' class="info-div">
+                <p><a routerLink="/create/night">Create a new one! </a></p>
+            </div>
         </div>
         <div class="main">
-            <li class="info-col"><a routerLink="#">Enjoy a meal</a></li>
-            <div class="info-div">
+            <li *ngIf='this.articleService.mealArticles.length != 0' class="info-col"><a
+                    routerLink="/articles/meal">Enjoy a meal</a></li>
+            <li *ngIf='this.articleService.mealArticles.length == 0' class="info-col"><a>Enjoy a meal</a></li>
+            <div *ngIf='this.articleService.mealArticles.length == 0' class="info-div">
                 <p>Unfortunatelly, no one has published anything yet.</p>
                 <p><a routerLink="/create/meal">Be the first one! </a></p>
             </div>
+            <div *ngIf='this.articleService.mealArticles.length != 0' class="info-div">
+                <p><a routerLink="/create/meal">Create a new one! </a></p>
+            </div>
         </div>
 
         <div class="main">
 
-            <li class="info-col"><a routerLink="#">Explore</a></li>
-            <div class="info-div">
+            <li *ngIf='this.articleService.exploreArticles.length != 0' class="info-col"><a
+                    routerLink="/articles/explore">Explore</a></li>
+            <li *ngIf='this.articleService.exploreArticles.length == 0' class="info-col"><a>Explore</a></li>
+            <div *ngIf="this.articleService.exploreArticles.length == 0" class="info-div">
                 <p>Unfortunatelly, no one has published anything yet.</p>
                 <p><a routerLink="/create/explore">Be the first one! </a></p>
+            </div>
+            <div *ngIf='this.articleService.exploreArticles.length != 0' class="info-div">
+                <p><a routerLink="/create/explore">Create a new one! </a></p>
             </div>
         </div>
         <div class="main">
 
-            <li class="info-col"><a routerLink="#">Have fun</a></li>
-            <div class="info-div">
+            <li *ngIf='this.articleService.funArticles.length != 0' class="info-col"><a routerLink="/articles/fun">Have
+                    fun</a></li>
+            <li *ngIf='this.articleService.funArticles.length == 0' class="info-col"><a>Have fun</a></li>
+            <div *ngIf='this.articleService.funArticles.length == 0' class="info-div">
                 <p>Unfortunatelly, no one has published anything yet.</p>
                 <p><a routerLink="/create/fun">Be the first one! </a></p>
+            </div>
+            <div *ngIf='this.articleService.funArticles.length != 0' class="info-div">
+                <p><a routerLink="/create/fun">Create a new one! </a></p>
             </div>
         </div>
 

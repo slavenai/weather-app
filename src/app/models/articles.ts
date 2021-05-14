@@ -7,4 +7,6 @@ export default class Article {
     likes: Array<string>;
     id: string;
     creatorId: string;
+    creatorName: string;
+    date: string;
   }

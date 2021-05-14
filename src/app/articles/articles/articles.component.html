@@ -1,0 +1,40 @@
+<div class="article-container">
+
+    <article *ngFor="let article of this.articles">
+        <h5>{{article.title}}</h5>
+        <section>
+            <img src="{{article.imageUrl}}" alt="">
+            <p class="desc">{{article.description}}</p>
+        </section>
+        <div class="info">
+            <div class="location">
+                <p>{{article.location}}</p>
+            </div>
+
+            <p>{{article.date}}</p>
+            <p>{{article.creatorName}}</p>
+        </div>
+        <div class="buttons">
+            <button *ngIf="article.creatorId == this.currUser.id" routerLink="/update/{{article.id}}">Update</button>
+            <button *ngIf="article.creatorId == this.currUser.id" (click)="deleteHandler(article.id)">Delete</button>
+            <button
+                *ngIf="article.creatorId != this.currUser.id && this.articleService.canLike(article.id, this.currUser.id) !== false"
+                (click)="likeHandler(article.id)">Like</button>
+            <button
+                *ngIf="article.creatorId != this.currUser.id && this.articleService.canLike(article.id, this.currUser.id) == false"
+                (click)="unlikeHandler(article.id)">Unlike</button>
+            <button disabled>Likes: {{article.likes}}</button>
+
+        </div>
+    </article>
+
+
+</div>
+<section class="create">
+    <button routerLink="/create/{{this.type}}">Add an article</button>
+</section>
+
+<!-- 
+height: 35px;
+width: 130px;
+margin-top: 65px; -->

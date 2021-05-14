@@ -49,13 +49,17 @@ export class CreateComponent implements OnInit {
     return this.userService.currentUser.id;
   }
 
+  get userName() {
+    return this.userService.currentUser.username;
+  }
+
   createHandler(data) {
       try{
-        this.articleService.create(data, this.type, this.location, this.userId);
+        this.articleService.create(data, this.type, this.location, this.userId, this.userName);
       } catch(e){
         console.log(e);
       }
        
-      this.router.navigate(['/']);
+      this.router.navigate([`/articles/${this.type}`]);
   }
 }

@@ -8,14 +8,13 @@ import { UserService } from '../services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements DoCheck {
-  currentUser = null;
+export class HeaderComponent {
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
-ngDoCheck() {
-this.currentUser = this.userService.currentUser
-}
+  get currentUser() {
+    return this.userService.currentUser
+  }
 
 
   logout() {

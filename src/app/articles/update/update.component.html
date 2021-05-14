@@ -1,1 +1,20 @@
-<p>update works!</p>
+<h2>Update your article</h2>
+<form [formGroup]="updateForm" (ngSubmit)="updateHandler(updateForm.value)">
+
+
+    <div>
+        <label for="title">Title</label>
+        <input type="text" class="create-input" formControlName="title">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea formControlName="description"></textarea>
+    </div>
+    <div>
+        <label for="imageUrl">Image link</label>
+        <input class="create-input" formControlName="imageUrl" type="text">
+    </div>
+
+    <button [disabled]="!updateForm.valid" type="submit">Update</button>
+
+</form>

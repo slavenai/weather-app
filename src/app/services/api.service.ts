@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
@@ -12,12 +11,9 @@ export class ApiService {
 
 
  getWeather(location): any {
-  this.http.get('http://api.weatherstack.com/current?access_key=bd99791ff3acfce034c2e265680b8288&query=' + location).subscribe(d => {
-    // @ts-ignore
-    this.location = `${d.location.name}, ${d.location.country}`;
-  })
-  return this.http.get('http://api.weatherstack.com/current?access_key=bd99791ff3acfce034c2e265680b8288&query=' + location);
 
+   return this.http.get('http://api.weatherstack.com/current?access_key=eed0e1b57816053889d767924f11156f&query=' + location);
+  
  }
 
  fahrenheitDegrees(celsiusDegrees) {
@@ -39,13 +35,13 @@ formatTemperature(celsiusDegrees) {
 }
 }
 
-// showDestination(name, country) {
-//   if (name == '' || name == undefined || country == '' || country == undefined) {
-//     return;
-//   } else {
-//     return `${name}, ${country}`;
-//   }
-// }
+showDestination(name, country) {
+  if (name == '' || name == undefined || country == '' || country == undefined) {
+    return;
+  } else {
+    return `${name}, ${country}`;
+  }
+}
 
 formatDateTime(str: string) {
   const strArr = str.split(' ');

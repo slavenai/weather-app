@@ -5,7 +5,7 @@
       <form [formGroup]="weatherSearchForm" (ngSubmit)="sendData(weatherSearchForm.value)">
         <div>
           <input type="text" id="weatherLocation" aria-describedby="weatherLocation"
-            placeholder="Please type in a location" formControlName="location" />
+            placeholder="Please type in a location" formControlName="location" value="{{this.location}}" />
         </div>
         <div>
           <button type="submit">
