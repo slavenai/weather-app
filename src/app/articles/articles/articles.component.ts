@@ -16,6 +16,7 @@ export class ArticlesComponent implements DoCheck {
   articles: Article[];
   canLikes: boolean[];
   likes: number;
+  noArticles: string;
 
 
   constructor (public articleService: ArticleService, 
@@ -27,6 +28,16 @@ export class ArticlesComponent implements DoCheck {
     this.activatedRoute.data.subscribe( data => {
       this.type = data.type;
     });
+
+    if (this.type == 'fun') {
+      this.noArticles = 'having fun';
+    } else if(this.type == 'explore'){
+      this.noArticles = 'exploring';
+    }else if(this.type == 'meal'){
+      this.noArticles = 'places to eat at';
+    }else if(this.type == 'night'){
+      this.noArticles = 'spending the night';
+    }
 
   }
 

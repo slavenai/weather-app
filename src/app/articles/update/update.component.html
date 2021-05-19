@@ -1,4 +1,4 @@
-<h2>Update your article</h2>
+<h2>Edit your article</h2>
 <form [formGroup]="updateForm" (ngSubmit)="updateHandler(updateForm.value)">
 
 
@@ -15,6 +15,6 @@
         <input class="create-input" formControlName="imageUrl" type="text">
     </div>
 
-    <button [disabled]="!updateForm.valid" type="submit">Update</button>
+    <button [disabled]="!updateForm.valid" type="submit">Edit</button>
 
 </form>

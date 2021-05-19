@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class UserService {
 
     currentUser = {} as User;  
+    errorMsg;
 
     constructor(public  afAuth:  AngularFireAuth) {
 
@@ -47,14 +48,15 @@ export class UserService {
 
   login(email, password) {    
 
-      this.afAuth.signInWithEmailAndPassword(email, password).then((userCredential) => {
-        this.currentUser.username = userCredential.user.displayName;
-        this.currentUser.isLoggedIn = true;
-        this.currentUser.id = userCredential.user.uid;
-          })
-    
-       
-
+  
+        this.afAuth.signInWithEmailAndPassword(email, password).then((userCredential) => {
+          this.currentUser.username = userCredential.user.displayName;
+          this.currentUser.isLoggedIn = true;
+          this.currentUser.id = userCredential.user.uid;
+            }).catch( e => {
+              this.errorMsg = e.message;
+            })   
+            
   }
 
   logout() {

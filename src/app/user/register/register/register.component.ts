@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { emailValidator } from '../../validator/email.validator';
+import { passwordsValidator } from '../../validator/passwords.validator';
+
 
 @Component({
   selector: 'app-register',
@@ -16,15 +19,19 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService
-  ) { }
+  ) { 
+
+  }
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      repassword: ['', [Validators.required, Validators.minLength(6)]]
-  });
+
+  const passControl = this.formBuilder.control('', [Validators.required, Validators.minLength(6)]);
+  this.registerForm = this.formBuilder.group({
+    username: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, emailValidator]],
+    password: passControl,
+    repassword: ['', [Validators.required, Validators.minLength(6), passwordsValidator(passControl)]]
+});
   }
 
   registerHandler() {

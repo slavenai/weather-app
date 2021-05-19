@@ -5,20 +5,40 @@
     <div>
         <label for="username">Username</label>
         <input formControlName="username" type="text">
+        <p *ngIf="registerForm.get('username').touched && registerForm.get('username').errors?.required">
+            The username should be atleast 3 characters long!
+        </p>
+
     </div>
 
     <div>
         <label for="email">Email</label>
         <input formControlName="email" type="text">
+        <p *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.required">
+            This field is required!
+        </p>
+        <p *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.emailValidator">
+            The email is not valid!
+        </p>
     </div>
     <div>
         <label for="password">Password</label>
         <input formControlName="password" type="password">
+        <p *ngIf="registerForm.get('password').touched && registerForm.get('password').errors?.required">
+            The password should be atleast 6 characters!
+        </p>
     </div>
     <div>
         <label for="repassword">Repeat Password</label>
         <input formControlName="repassword" type="password">
+        <p *ngIf="registerForm.get('repassword').touched && registerForm.get('repassword').errors?.required">
+            This field is required!
+        </p>
+        <p *ngIf="registerForm.get('repassword').touched && registerForm.get('repassword').errors?.repassValidator">
+            The passwords do not match!
+        </p>
     </div>
     <button [disabled]="!registerForm.valid" type="submit">Register</button>
+    <p>Already have an account? <a routerLink="/login">Sign in!</a></p>
 
 </form>

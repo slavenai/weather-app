@@ -3,13 +3,23 @@
 
     <div>
         <label for="email">Email</label>
-        <input type="text" name="email" ngModel required>
+        <input type="text" name="email" ngModel #email="ngModel" required>
+        <p *ngIf="email.touched && email.errors?.required">
+            This field is required!
+        </p>
+
     </div>
     <div>
         <label for="password">Password</label>
-        <input name="password" type="password" ngModel required>
+        <input ngModel name="password" type="password" #password="ngModel" required>
+        <p *ngIf="password.touched && password.errors?.required">
+            This field is required!
+        </p>
     </div>
 
     <button [disabled]="!f.valid" type="submit">Login</button>
+    <p>{{this.userService.errorMsg}}</p>
+
+    <p>Don't have an account? <a routerLink="/register">Join us!</a></p>
 
 </form>

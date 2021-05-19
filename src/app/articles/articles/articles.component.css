@@ -85,3 +85,25 @@ div.info p {
   padding: 10px;
   border-radius: 6px;
 }
+
+.no-articles {
+  display: block;
+  padding: 1rem;
+  margin-top: 8rem;
+}
+
+.no-articles > h4,
+.no-articles > h5 {
+  color: rgb(102, 99, 91);
+  text-align: center;
+  border-bottom: none;
+}
+
+.no-articles a {
+  text-decoration: none;
+  color: rgb(102, 99, 91);
+}
+
+.no-articles a:hover {
+  color: white;
+}

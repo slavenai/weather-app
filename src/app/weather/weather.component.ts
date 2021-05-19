@@ -23,6 +23,8 @@ export class WeatherComponent implements OnInit {
       location: ['']
     });
 
+  
+
     if (this.apiService.location && this.userService.currentUser.isLoggedIn == true) {
       this.apiService
       .getWeather(this.apiService.location)
@@ -32,6 +34,10 @@ export class WeatherComponent implements OnInit {
         })
     }
 
+  }
+
+   get isLoggedIn() {
+    return this.userService.currentUser.isLoggedIn;
   }
 
 

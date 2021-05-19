@@ -28,6 +28,12 @@
         </div>
     </article>
 
+    <section class="no-articles" *ngIf="this.articles.length == 0">
+        <h4>Unfortunatelly, there are no articles for {{this.noArticles}} in {{this.location}}.</h4>
+        <h5><a routerLink="/create/{{this.type}}">Create the first one!</a></h5>
+    </section>
+
+
 
 </div>
 <section class="create">

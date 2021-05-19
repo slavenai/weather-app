@@ -78,3 +78,27 @@ img {
   text-align: left;
   margin-left: 90px;
 }
+
+.no-guide {
+  padding: 2rem;
+  color: black;
+}
+
+.no-guide a {
+  color: rgb(102, 99, 91);
+}
+
+.no-guide a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.headings {
+  text-align: center;
+  padding: 2rem;
+}
+
+.headings h4,
+h5 {
+  color: white;
+}

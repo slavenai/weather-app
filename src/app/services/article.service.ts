@@ -139,7 +139,24 @@ export class ArticleService {
   }
 
   delete(articleId) {
+    let likeIdArr = [];
     this.articlesRef.child(articleId).remove();
+    
+    this.db.database.ref('likes').on('value', function (snapshot) {      
+     
+      Object.entries(snapshot.val()).forEach((arr) => {  
+        //@ts-ignore
+          if (arr[1].articleId = articleId) {
+            likeIdArr.push(arr[0]);
+          }
+      })       
+    })
+
+    likeIdArr.forEach((id) => {
+      this.db.database.ref('likes/' + id).remove();
+    })
+
+
   }
 
   canLike(articleId, userId) {

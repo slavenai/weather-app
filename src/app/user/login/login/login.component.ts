@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailValidator } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { emailValidator } from 'src/app/user/validator/email.validator'
 
 @Component({
   selector: 'app-login',
@@ -9,16 +11,21 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent {
 
-  constructor( private router: Router, private userService: UserService) {}
+
+  constructor( private router: Router, public userService: UserService) {}
+
+  get errMessage() {
+    return this.userService.errorMsg;
+  } 
 
   loginHandler(data) {
-    try{
+   
       const {email, password} = data;
+   
       this.userService.login(email, password);
-      this.router.navigate(['/'])
-    } catch(e) {
-      console.log(e);
-    }
+
+        this.router.navigate(['/'])     
+    
 
   }
 }
